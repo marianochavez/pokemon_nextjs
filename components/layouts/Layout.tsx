@@ -1,30 +1,41 @@
-import { FC, ReactElement, ReactNode } from "react"
-import Head from "next/head"
-import React from 'react';
-import { Navbar } from "../ui";
+import { FC } from 'react';
+import Head from 'next/head';
 
-type LayoutProps = {
-  children: ReactNode;
-  title?: string;	
+import { Navbar } from '../ui';
+
+interface Props {
+  title?: string;
 }
 
-export const Layout: FC<LayoutProps> = ({ title, children }) => {
-  return (
-    <>
-        <Head>
-            <title>{title || 'PokemonApp'}</title>
-            <meta name="author" content="Mariano Chavez"/>
-            <meta name="description" content={`Informacion sobre el pokemon ${title}`}/>
-            <meta name="keywords" content={`${title}, pokemon, pokedex`}/>
-        </Head>
 
-        <Navbar/>
+const origin = (typeof window === 'undefined') ? '' : window.location.origin;
+
+
+export const Layout: FC<Props> = ({ children, title }) => {
+
+
+  return (
+      <>
+        <Head>
+            <title>{ title || 'PokemonApp' }</title>
+            <meta name="author" content="Fernando Herrera" />
+            <meta name="description" content={`Información sobre el pokémon ${ title }`} />
+            <meta name="keywords" content={ `${ title }, pokemon, pokedex`} />
+
+            <meta property="og:title" content={`Información sobre ${ title }`} />
+            <meta property="og:description" content={`Esta es la página sobre ${ title }`} />
+            <meta property="og:image" content={`${ origin }/img/banner.png`} />
+
+        </Head>
+      
+        <Navbar />
 
         <main style={{
-          padding: '0px 20px',
+          padding: '0px 20px'
         }}>
-            {children}
+            { children }
         </main>
-    </>
+      
+      </>
   )
-}
+};
