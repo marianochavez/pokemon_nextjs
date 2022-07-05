@@ -19,6 +19,7 @@ export const NoFavorites = () => {
           css={{
             opacity: 0.1
           }}
+          alt='Empty favorites'
         />
       </Container>
   )

@@ -13,7 +13,7 @@ export const PokemonCard: FC<Props> = ({ pokemon }) => {
 
     const router = useRouter();
 
-    const onClick = () => {
+    const click = () => {
         router.push(`/name/${ pokemon.name }`);
     }
 
@@ -21,9 +21,9 @@ export const PokemonCard: FC<Props> = ({ pokemon }) => {
   return (
     <Grid xs={ 6 } sm={ 3 } md={ 2 } xl={ 1 } key={ pokemon.id }>
         <Card 
-            hoverable 
-            clickable
-            onClick={ onClick }
+            isHoverable 
+            isPressable
+            onPress={ click }
         >
             <Card.Body css={{ p: 1 }}>
                 <Card.Image 
